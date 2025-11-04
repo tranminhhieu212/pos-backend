@@ -90,7 +90,7 @@ public class StoreController {
         return ResponseEntity.ok(apiResponse);
     }
 
-    @PutMapping("/{id}/moderate")
+    @GetMapping("/{id}/moderate")
     public ResponseEntity<StoreDto> moderateStore(
             @PathVariable(name = "id", required = true) Long id,
             @RequestParam(name = "status") StoreStatus status,

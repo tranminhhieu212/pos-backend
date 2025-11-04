@@ -25,8 +25,8 @@ public class StoreServiceImplementation implements StoreService {
 
     @Override
     public StoreDto createStore(StoreDto storeDto, User user) {
-
         Store store = storeMapper.toEntity(storeDto);
+        store.setStoreAdmin(user);
         return storeMapper.toDto(storeRepository.save(store));
     }
 
@@ -93,7 +93,9 @@ public class StoreServiceImplementation implements StoreService {
     public void deleteStore(Long id) throws UserException, Exception {
 
         Store store = getStoreByAdmin();
-        store.setStatus(StoreStatus.BLOCKED);
+        if(store == null) throw new Exception("Store not found!");
+
+        storeRepository.deleteById(id);
     }
 
     @Override

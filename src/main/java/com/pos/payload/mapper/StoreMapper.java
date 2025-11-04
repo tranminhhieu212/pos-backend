@@ -12,9 +12,9 @@ public interface StoreMapper {
 
     @Mappings({
             @Mapping(target = "id", ignore = true),
-            @Mapping(target = "createdAt", ignore = true),
-            @Mapping(target = "updatedAt", ignore = true),
-            @Mapping(target = "status", ignore = true)
+//            @Mapping(target = "createdAt", ignore = true),
+//            @Mapping(target = "updatedAt", ignore = true),
+//            @Mapping(target = "status", ignore = true)
     })
     Store toEntity(StoreDto dto);
 
@@ -24,7 +24,8 @@ public interface StoreMapper {
             @Mapping(target = "id", ignore = true),
             @Mapping(target = "createdAt", ignore = true),
             @Mapping(target = "updatedAt", ignore = true),
-            @Mapping(target = "status", ignore = true)
+            @Mapping(target = "status", ignore = true),
+            @Mapping(target = "storeAdmin", ignore = true)
     })
     void updateFromDto(StoreDto dto, @MappingTarget Store store);
 }

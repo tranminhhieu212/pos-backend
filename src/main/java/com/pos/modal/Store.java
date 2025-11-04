@@ -38,12 +38,16 @@ public class Store {
 
     @PrePersist
     protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        status=StoreStatus.PENDING;
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
+        }
+        if (this.status == null) {
+            this.status = StoreStatus.PENDING;
+        }
     }
 
     @PreUpdate
     protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 }
